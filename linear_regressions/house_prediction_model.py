@@ -101,7 +101,7 @@ class LinearRegression:
 
 if __name__ == "__main__":
   model = LinearRegression()
-  df = model.load("data/data.csv")
+  df = model.load("data/house_price_data.csv")
   prepared_df = model.prepare(df)
   data = model.separate(prepared_df)
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
   # Train model
   y_predict_train = model.train(data["x_train"][0], w_init, b_init)
   cost_init = model.cost(data["x_train"], data["y_train"], w_init, b_init)
-  w_train, b_train = model.gradient_descent(data["x_train"], data["y_train"], w_init, b_init, 0.001, 100000)
+  w_train, b_train = model.gradient_descent(data["x_train"], data["y_train"], w_init, b_init, 0.01, 100000)
 
   # validate model
   y_predict_val = model.train(data["x_val"][0], w_train, b_train)
